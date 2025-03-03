@@ -16,23 +16,27 @@ class Expense{
         Expense(string name, vector<string> members, int amount, iSplit* algo);
         void addFriend(string name);
         void removeFriend(string name);
-        void updateSplitAlgo(iSplit* algo);
+        void updateSplitAlgo();
         void showSplit();
         unordered_map<string, double> getSplit();
 };
-
+void Expense::updateSplitAlgo() {
+    this->split = this->splitAlgo->splitMoney(this->friends, amount);
+    for(string name: this->friends) {
+        userDb->getUser(name)->notifyMe(split[name], this->name);
+    }
+}
 Expense::Expense(string name, vector<string> members, int amount, iSplit* algo) {
     this->name = name;
     this->friends = members;
     this->amount = amount;
     this->splitAlgo = algo;
-
-    this->split = this->splitAlgo->splitMoney(this->friends, amount);
+    this->updateSplitAlgo();
 }
 
 void Expense::addFriend(string name) {
     this->friends.push_back(name);
-    this->split = this->splitAlgo->splitMoney(this->friends, amount);
+    this->updateSplitAlgo();
 }
 
 void Expense::removeFriend(string name) {
@@ -42,7 +46,7 @@ void Expense::removeFriend(string name) {
         index++;
     }
     this->friends.erase(this->friends.begin()+index);
-    this->split = this->splitAlgo->splitMoney(this->friends, amount);
+    this->updateSplitAlgo();
 }
 
 void Expense::showSplit() {

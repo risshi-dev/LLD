@@ -16,7 +16,7 @@ public:
     string getEmail();
 
     // Interface in future
-    void notifyMe(int amount);
+    void notifyMe(int amount, string expense);
 };
 
 User::User(string name, int number, string email)
@@ -38,6 +38,6 @@ int User::getNumber() {
     return this->mobileNumber;
 }
 
-void User::notifyMe(int amount) {
-    cout<<"Expense added: "<<amount;
+void User::notifyMe(int amount, string expense) {
+    cout<<"Hi, "<<this->name<<" Expense added: "<<amount<< " in "<<expense<<endl;
 }

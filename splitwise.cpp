@@ -28,11 +28,11 @@ int main() {
 
     paisa->addExpense(expn);
 
-    paisa->showGroupSplit();
+    // paisa->showGroupSplit();
 
     expn->addFriend("ujjwal");
 
-    paisa->showGroupSplit();
+    // paisa->showGroupSplit();
 
 
     return 0;
