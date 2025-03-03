@@ -57,9 +57,6 @@ int main() {
     Screen* screen1 = new Screen(1, seat1);
     Screen* screen2 = new Screen(2, seat2);
 
-    t1->addMovieScreens(screen1);
-    t2->addMovieScreens(screen2);
-
     //Add show;
     Shows* show1 = new Shows(1, race, "7:30");
     Shows* show2 = new Shows(2, znmd, "7:30");
